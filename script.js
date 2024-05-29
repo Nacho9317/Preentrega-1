@@ -7,21 +7,25 @@ do {
     edad = parseInt(prompt("Por favor, ingresa tu edad:"));
 } while (isNaN(edad) || edad <= 0 || edad > 150);
 
+// Función para mostrar los tratamientos disponibles y obtener la seleccion del usuario
+function mostrarTratamientos() {
+    let opcion;
+    // Mostrar tratamientos disponibles y pedir al usuario que seleccione uno
+    do {
+        opcion = parseInt(prompt("Estos son los tratamientos que ofrecemos:\n1. Masaje relajante\n2. Limpieza facial\n3. Tratamiento de exfoliación corporal\n4. Depilación láser\n5. Masaje de tejido profundo\n\nPor favor, selecciona el número correspondiente al tratamiento que le interesa:"));
+    } while (isNaN(opcion) || opcion < 1 || opcion > 5); // Se asume que las opciones válidas están entre 1 y 5
+    return opcion;
+}
+
 // Verificar si el usuario es mayor de edad
 if (edad < 18) {
     alert("Lo sentimos, debes ser mayor de edad para acceder a nuestros servicios.");
 } else {
     // Mostrar mensaje de bienvenida
-    alert("Hola " + nombre + "Bienvenido a nuestro consultorio.");
+    alert("Hola " + nombre + " Bienvenido a nuestro consultorio.");
 
-    // Mostrar lista de tratamientos disponibles
-    alert("Estos son los tratamientos que ofrecemos:\n1. Masaje relajante\n2. Limpieza facial\n3. Tratamiento de exfoliación corporal\n4. Depilación láser\n5. Masaje de tejido profundo");
-
-    // Pedir al usuario que seleccione un tratamiento
-    let opcion;
-    do {
-        opcion = parseInt(prompt("Por favor, selecciona el número correspondiente al tratamiento que te interesa:"));
-    } while (isNaN(opcion) || opcion < 1 || opcion > 5); // Se asume que las opciones válidas están entre 1 y 5
+    // Obtener selección de tratamiento
+    let opcion = mostrarTratamientos();
 
     // Determinar el tratamiento seleccionado
     let tratamientoSeleccionado;
@@ -46,5 +50,5 @@ if (edad < 18) {
     }
 
     // Mostrar el tratamiento seleccionado
-    alert("Perfecto, has seleccionado el tratamiento: " + tratamientoSeleccionado + ". Nos pondremos en contacto contigo para coordinar los detalles.");
+    alert("Has seleccionado el tratamiento: " + tratamientoSeleccionado + ". Nos pondremos en contacto contigo para coordinar los detalles.");
 }
